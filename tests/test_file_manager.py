@@ -72,7 +72,7 @@ def test_file_manager_required_fields():
     # Тест с отсутствующими полями в json
     test_data = [{"description": "Описание", "products": []}]
 
-    with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
         json.dump(test_data, f)
         temp_filename = f.name
 

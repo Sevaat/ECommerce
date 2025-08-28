@@ -1,6 +1,7 @@
 import json
 import os
 from pathlib import Path
+from typing import Union
 
 from src.category import Category
 from src.product import Product
@@ -10,7 +11,7 @@ os.makedirs(file_dir, exist_ok=True)
 file_handler = f"{file_dir}/products.json"
 
 
-def file_upload(filename: str = file_handler):
+def file_upload(filename: str = file_handler) -> Union[None, list]:
     """
     Загрузить данные категорий с файла json
     :param filename: путь к файлу json
@@ -23,9 +24,7 @@ def file_upload(filename: str = file_handler):
             for dt in data:
                 name = dt["name"]
                 description = dt["description"]
-                products = [
-                    Product(prd["name"], prd["description"], prd["price"], prd["quantity"]) for prd in dt["products"]
-                ]
+                products = [Product.new_product(prd) for prd in dt["products"]]
                 categories.append(Category(name, description, products))
             return categories
     except Exception as e:
