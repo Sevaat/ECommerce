@@ -58,3 +58,10 @@ Name2, 2.0 руб. Остаток: 2 шт."""
     category = Category("Name", "Description", simple_products)
 
     assert text == category.output_product_list()
+
+
+def test_category_str(simple_products):
+    # Тест проверки магического метода str
+    category = Category("Name", "Description", simple_products)
+
+    assert "Name, количество продуктов: 3 шт." == str(category)

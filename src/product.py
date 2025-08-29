@@ -22,6 +22,12 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self) -> str:
+        return f"{self.name}, {float(self.__price)} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other: Self) -> float:
+        return float(self.__price * self.quantity + other.__price * other.quantity)
+
     @classmethod
     def new_product(cls, product: dict) -> Union[None, Self]:
         """
