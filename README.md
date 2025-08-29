@@ -25,13 +25,15 @@ tkachenko <sevaatmail@mail.com>
 
 #### Класс продукта
 
-product = Product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+product = Product(name="Name", description="Description", price=1.0, quantity=1)  
+product = Product.new_product({"name": "Name", "description": "Description", "price": 1.0, "quantity": 1})
 
 #### Класс категории
 
-products = [
-        Product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5),
-        Product("Iphone 15", "512GB, Gray space", 210000.0, 8),
-        Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14),
-    ]  
-category = Category("Name", "Description", products)
+product1 = Product("Name1", "Description1", 1.0, 1)  
+product2 = Product("Name2", "Description2", 2.0, 2)  
+product3 = Product("Name3", "Description3", 3.0, 3)  
+products = [product1, product2]
+category = Category("Name", "Description", products)  
+category.add_product(product3)  
+category.output_product_list()
