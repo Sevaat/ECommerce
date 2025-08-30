@@ -29,7 +29,7 @@ class Product:
         if type(self) is type(other):
             return float(self.__price * self.quantity + other.__price * other.quantity)
         else:
-            raise ValueError("Недопустимое значение: разные типы данных")
+            raise TypeError("Недопустимое значение: разные типы данных")
 
     @classmethod
     def new_product(cls, product: dict) -> Union[None, Self]:

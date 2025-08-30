@@ -31,7 +31,7 @@ class Category:
             self.__products.append(product)
             Category.product_count += 1
         else:
-            raise ValueError("Недопустимое значение: неверный тип данных")
+            raise TypeError("Недопустимое значение: неверный тип данных")
 
     @property
     def products(self) -> list:
