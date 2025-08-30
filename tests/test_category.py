@@ -1,7 +1,7 @@
 import pytest
 
 from src.category import Category
-from src.product import Product
+from src.product.product import Product
 
 
 def test_category_correct_initialization(get_products):
@@ -18,13 +18,13 @@ def test_category_correct_initialization(get_products):
 
 def test_category_invalid_data_type_name(get_products):
     # Тест с неверными типами данных
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Category(0, "Description", get_products)
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Category("Name", 0, get_products)
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Category("Name", "Description", 0)
 
 
@@ -47,7 +47,7 @@ def test_category_adding_product(get_products):
     assert category.category_count == 2
     assert category.product_count == 7
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         category.add_product(0)
 
 

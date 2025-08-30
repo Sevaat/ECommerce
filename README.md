@@ -26,7 +26,11 @@ tkachenko <sevaatmail@mail.com>
 #### Класс продукта
 
 product = Product(name="Name", description="Description", price=1.0, quantity=1)  
-product = Product.new_product({"name": "Name", "description": "Description", "price": 1.0, "quantity": 1})
+product = Product.new_product({"name": "Name", "description": "Description", "price": 1.0, "quantity": 1})  
+smartphone = Smartphone(name="S1", description="DS1", price=1.0, quantity=1, efficiency=1, model="M1", memory=1, color="C1")  
+smartphone = Smartphone.new_product({"name": "S1", "description": "DS1", "price": 1.0, "quantity": 1, "efficiency": 1, "model": "M1", "memory": 1, "color": "C1"})  
+laws_grass = LawsGrass(name="S1", description="DS1", price=1.0, quantity=1, country="C1", germination_period="GP1", color="C1")  
+laws_grass = LawsGrass.new_product({"name": "S1", "description": "DS1", "price": 1.0, "quantity": 1, "country": "C1", "germination_period": "GP1", "color": "C1"}) 
 
 #### Класс категории
 

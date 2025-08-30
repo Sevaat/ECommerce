@@ -4,7 +4,7 @@ import tempfile
 from pathlib import Path
 
 from src.category import Category
-from src.file_manager import file_upload
+from src.utils.file_manager import file_upload
 
 file_dir = Path(__file__).resolve().parent.parent / "data"
 os.makedirs(file_dir, exist_ok=True)
