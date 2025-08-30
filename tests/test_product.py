@@ -74,3 +74,15 @@ def test_product_change_in_value():
 
     product.price = 5.0
     assert product.price == 5.0
+
+
+def test_product_str(simple_products):
+    # Тест проверки магического метода str
+    text = str(simple_products[0])
+
+    assert "Name1, 1.0 руб. Остаток: 1 шт." == text
+
+
+def test_product_add(simple_products):
+    # Тест проверки магического метода add
+    assert simple_products[0] + simple_products[1] == 5.0

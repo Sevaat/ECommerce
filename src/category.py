@@ -17,6 +17,10 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
+    def __str__(self) -> str:
+        quantity_of_products = sum([prd.quantity for prd in self.__products])
+        return f"{self.name}, количество продуктов: {quantity_of_products} шт."
+
     def add_product(self, product: Product) -> None:
         """
         Метод добавления продукта в список
@@ -38,5 +42,5 @@ class Category:
         Метод вывода списка продуктов
         :return: список продуктов в виде текста
         """
-        text = [f"{prd.name}, {prd.price} руб. Остаток: {prd.quantity} шт." for prd in self.__products]
+        text = [str(prd) for prd in self.__products]
         return "\n".join(text)
