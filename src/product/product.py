@@ -14,7 +14,7 @@ class Product:
             and (isinstance(price, int) or isinstance(price, float))
             and isinstance(quantity, int)
         ):
-            raise ValueError("Недопустимое значение: неверный тип данных")
+            raise TypeError("Недопустимое значение: неверный тип данных")
         if price < 0 or quantity < 0:
             raise ValueError("Недопустимое значение: отрицательная величина")
         self.name = name

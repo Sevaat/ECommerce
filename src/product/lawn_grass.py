@@ -17,7 +17,7 @@ class LawnGrass(Product):
     ):
         super().__init__(name, description, price, quantity)
         if not (isinstance(country, str) and isinstance(germination_period, str) and isinstance(color, str)):
-            raise ValueError("Недопустимое значение: неверный тип данных")
+            raise TypeError("Недопустимое значение: неверный тип данных")
         if price < 0 or quantity < 0:
             raise ValueError("Недопустимое значение: отрицательная величина")
         self.country = country

@@ -10,7 +10,7 @@ class Category:
 
     def __init__(self, name: str, description: str, products: list):
         if not (isinstance(name, str) and isinstance(description, str) and isinstance(products, list)):
-            raise ValueError("Недопустимое значение: неверный тип данных")
+            raise TypeError("Недопустимое значение: неверный тип данных")
         self.name = name
         self.description = description
         self.__products = products

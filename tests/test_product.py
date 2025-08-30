@@ -28,16 +28,16 @@ def test_product_negative_quantity():
 
 def test_product_invalid_data_type_name():
     # Тест с неверными типами данных
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Product(0, "Description", 1.0, 1)
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Product("Name", 0, 1.0, 1)
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Product("Name", "Description", "1.0", 1)
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Product("Name", "Description", 1.0, "1")
 
 
@@ -56,7 +56,7 @@ def test_product_initialization_from_dictionary():
 def test_product_initialization_from_dictionary_with_error():
     # Тест инициализации объекта по данным словаря с ошибкой
     data = {"name": 0, "description": "Description", "price": 1.0, "quantity": 1}
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Product.new_product(data)
 
     data = {"description": "Description", "price": 1.0, "quantity": 1}
@@ -94,11 +94,11 @@ def test_product_add_different_products(different_products):
     assert different_products[2] + different_products[3] == 5
     assert different_products[4] + different_products[5] == 5
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         different_products[0] + different_products[2]
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         different_products[0] + different_products[4]
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         different_products[2] + different_products[4]

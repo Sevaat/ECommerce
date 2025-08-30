@@ -23,13 +23,13 @@ def test_laws_grass_invalid_data_type_name(laws_grass_data):
     # Тест с неверными типами данных
     lgd = laws_grass_data
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         LawnGrass(lgd[0], lgd[1], lgd[2], lgd[3], float("inf"), lgd[5], lgd[6])
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         LawnGrass(lgd[0], lgd[1], lgd[2], lgd[3], lgd[4], float("inf"), lgd[6])
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         LawnGrass(lgd[0], lgd[1], lgd[2], lgd[3], lgd[4], lgd[5], float("inf"))
 
 
@@ -52,17 +52,17 @@ def test_laws_grass_initialization_from_dictionary_with_error(laws_grass_data_di
     # Тест инициализации объекта по данным словаря с ошибкой
     dict_with_error = laws_grass_data_dict
     dict_with_error["country"] = float("inf")
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         LawnGrass.new_product(dict_with_error)
 
     dict_with_error = laws_grass_data_dict
     dict_with_error["germination_period"] = float("inf")
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         LawnGrass.new_product(dict_with_error)
 
     dict_with_error = laws_grass_data_dict
     dict_with_error["color"] = float("inf")
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         LawnGrass.new_product(dict_with_error)
 
     dict_with_error = laws_grass_data_dict

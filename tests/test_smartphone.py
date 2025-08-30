@@ -24,16 +24,16 @@ def test_smartphone_invalid_data_type_name(smartphone_data):
     # Тест с неверными типами данных
     sd = smartphone_data
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Smartphone(sd[0], sd[1], sd[2], sd[3], "inf", sd[5], sd[6], sd[7])
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Smartphone(sd[0], sd[1], sd[2], sd[3], sd[4], float("inf"), sd[6], sd[7])
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Smartphone(sd[0], sd[1], sd[2], sd[3], sd[4], sd[5], "inf", sd[7])
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Smartphone(sd[0], sd[1], sd[2], sd[3], sd[4], sd[5], sd[6], float("inf"))
 
 
@@ -57,22 +57,22 @@ def test_smartphone_initialization_from_dictionary_with_error(smartphone_data_di
     # Тест инициализации объекта по данным словаря с ошибкой
     dict_with_error = smartphone_data_dict
     dict_with_error["efficiency"] = "inf"
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Smartphone.new_product(dict_with_error)
 
     dict_with_error = smartphone_data_dict
     dict_with_error["model"] = float("inf")
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Smartphone.new_product(dict_with_error)
 
     dict_with_error = smartphone_data_dict
     dict_with_error["memory"] = "inf"
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Smartphone.new_product(dict_with_error)
 
     dict_with_error = smartphone_data_dict
     dict_with_error["color"] = float("inf")
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Smartphone.new_product(dict_with_error)
 
     dict_with_error = smartphone_data_dict

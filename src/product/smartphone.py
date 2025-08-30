@@ -22,7 +22,7 @@ class Smartphone(Product):
             and (isinstance(memory, int) or isinstance(memory, float))
             and isinstance(color, str)
         ):
-            raise ValueError("Недопустимое значение: неверный тип данных")
+            raise TypeError("Недопустимое значение: неверный тип данных")
         if price < 0 or quantity < 0:
             raise ValueError("Недопустимое значение: отрицательная величина")
         self.efficiency = efficiency
