@@ -11,7 +11,7 @@ class Product:
         if not (
             isinstance(name, str)
             and isinstance(description, str)
-            and (isinstance(price, float) or isinstance(price, int))
+            and (isinstance(price, int) or isinstance(price, float))
             and isinstance(quantity, int)
         ):
             raise ValueError("Недопустимое значение: неверный тип данных")
@@ -26,7 +26,10 @@ class Product:
         return f"{self.name}, {float(self.__price)} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other: Self) -> float:
-        return float(self.__price * self.quantity + other.__price * other.quantity)
+        if type(self) is type(other):
+            return float(self.__price * self.quantity + other.__price * other.quantity)
+        else:
+            raise ValueError("Недопустимое значение: разные типы данных")
 
     @classmethod
     def new_product(cls, product: dict) -> Union[None, Self]:
@@ -35,7 +38,8 @@ class Product:
         :param product: словарь с данными
         :return: объект класса Product
         """
-        if "name" in product and "description" in product and "price" in product and "quantity" in product:
+        attributes = ["name", "description", "price", "quantity"]
+        if all(attribute in product for attribute in attributes):
             name = product["name"]
             description = product["description"]
             price = product["price"]

@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Union
 
 from src.category import Category
-from src.product import Product
+from src.product.product import Product
 
 file_dir = Path(__file__).resolve().parent.parent / "data"
 os.makedirs(file_dir, exist_ok=True)

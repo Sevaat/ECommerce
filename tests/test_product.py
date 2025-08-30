@@ -1,6 +1,6 @@
 import pytest
 
-from src.product import Product
+from src.product.product import Product
 
 
 def test_product_correct_initialization():
@@ -86,3 +86,19 @@ def test_product_str(simple_products):
 def test_product_add(simple_products):
     # Тест проверки магического метода add
     assert simple_products[0] + simple_products[1] == 5.0
+
+
+def test_product_add_different_products(different_products):
+    # Тест на сложение разных пар продуктов
+    assert different_products[0] + different_products[1] == 5
+    assert different_products[2] + different_products[3] == 5
+    assert different_products[4] + different_products[5] == 5
+
+    with pytest.raises(ValueError):
+        different_products[0] + different_products[2]
+
+    with pytest.raises(ValueError):
+        different_products[0] + different_products[4]
+
+    with pytest.raises(ValueError):
+        different_products[2] + different_products[4]

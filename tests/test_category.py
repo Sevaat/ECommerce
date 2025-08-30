@@ -1,7 +1,7 @@
 import pytest
 
 from src.category import Category
-from src.product import Product
+from src.product.product import Product
 
 
 def test_category_correct_initialization(get_products):
