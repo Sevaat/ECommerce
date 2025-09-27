@@ -20,6 +20,22 @@ def test_smartphone_correct_initialization(smartphone_data):
     assert smartphone.color == smartphone_data[7]
 
 
+def test_smartphone_negative_price(smartphone_data):
+    # Тест с отрицательной стоимостью
+    name, description, price, quantity, efficiency, model, memory, color = smartphone_data
+    with pytest.raises(ValueError):
+        Smartphone(name, description, -1, quantity, efficiency, model, memory, color)
+
+
+def test_smartphone_incorrect_quantity(smartphone_data):
+    # Тест с отрицательным и нулевым количеством
+    name, description, price, quantity, efficiency, model, memory, color = smartphone_data
+    with pytest.raises(ValueError):
+        Smartphone(name, description, price, 0, efficiency, model, memory, color)
+    with pytest.raises(ValueError):
+        Smartphone(name, description, price, -1, efficiency, model, memory, color)
+
+
 def test_smartphone_invalid_data_type_name(smartphone_data):
     # Тест с неверными типами данных
     sd = smartphone_data

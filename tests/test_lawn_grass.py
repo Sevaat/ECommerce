@@ -19,6 +19,22 @@ def test_laws_grass_correct_initialization(laws_grass_data):
     assert laws_grass.color == laws_grass_data[6]
 
 
+def test_laws_grass_negative_price(laws_grass_data):
+    # Тест с отрицательной стоимостью
+    name, description, price, quantity, country, germination_period, color = laws_grass_data
+    with pytest.raises(ValueError):
+        LawnGrass(name, description, -1, quantity, country, germination_period, color)
+
+
+def test_laws_grass_incorrect_quantity(laws_grass_data):
+    # Тест с отрицательным и нулевым количеством
+    name, description, price, quantity, country, germination_period, color = laws_grass_data
+    with pytest.raises(ValueError):
+        LawnGrass(name, description, price, -1, country, germination_period, color)
+    with pytest.raises(ValueError):
+        LawnGrass(name, description, price, 0, country, germination_period, color)
+
+
 def test_laws_grass_invalid_data_type_name(laws_grass_data):
     # Тест с неверными типами данных
     lgd = laws_grass_data
