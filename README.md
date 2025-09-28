@@ -23,6 +23,10 @@ tkachenko <sevaatmail@mail.com>
 
 ## Использование/Примеры
 
+#### Абстрактный класс продуктов
+
+#### Миксин для логирования InitLoggerMixin
+
 #### Класс продукта
 
 product = Product(name="Name", description="Description", price=1.0, quantity=1)  

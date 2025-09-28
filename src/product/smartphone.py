@@ -1,4 +1,4 @@
-from typing import Self, Union
+from typing import Union
 
 from src.product.product import Product
 
@@ -16,11 +16,13 @@ class Smartphone(Product):
         color: str,
     ):
         super().__init__(name, description, price, quantity)
-        if not (
-            (isinstance(efficiency, int) or isinstance(efficiency, float))
-            and isinstance(model, str)
-            and (isinstance(memory, int) or isinstance(memory, float))
-            and isinstance(color, str)
+        if not all(
+            [
+                (isinstance(efficiency, int) or isinstance(efficiency, float)),
+                isinstance(model, str),
+                (isinstance(memory, int) or isinstance(memory, float)),
+                isinstance(color, str),
+            ]
         ):
             raise TypeError("Недопустимое значение: неверный тип данных")
         if price < 0 or quantity < 0:
@@ -29,24 +31,3 @@ class Smartphone(Product):
         self.model = model
         self.memory = memory
         self.color = color
-
-    @classmethod
-    def new_product(cls, product: dict) -> Union[None, Self]:
-        """
-        Метод преобразования словаря в объект класса
-        :param product: словарь с данными
-        :return: объект класса Smartphone
-        """
-        attributes = ["name", "description", "price", "quantity", "efficiency", "model", "memory", "color"]
-        if all(attribute in product for attribute in attributes):
-            name = product["name"]
-            description = product["description"]
-            price = product["price"]
-            quantity = product["quantity"]
-            efficiency = product["efficiency"]
-            model = product["model"]
-            memory = product["memory"]
-            color = product["color"]
-            return cls(name, description, price, quantity, efficiency, model, memory, color)
-        else:
-            raise ValueError("Недопустимое значение: неверные данные словаря")
