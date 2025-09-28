@@ -65,3 +65,17 @@ def test_category_str(simple_products):
     category = Category("Name", "Description", simple_products)
 
     assert "Name, количество продуктов: 3 шт." == str(category)
+
+
+def test_category_middle_price_valid():
+    # Тест на корректный расчет взвешенного среднего значения цены
+    product1 = Product("Name1", "Description1", 1.0, 1)
+    product2 = Product("Name2", "Description2", 2.0, 1)
+    category = Category("Name", "Description", [product1, product2])
+    assert category.middle_price() == 1.5
+
+
+def test_category_middle_price_invalid():
+    # Тест на некорректный расчет взвешенного среднего значения цены
+    category = Category("Name", "Description", [])
+    assert category.middle_price() == 0

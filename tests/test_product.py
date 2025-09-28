@@ -20,10 +20,12 @@ def test_product_negative_price():
         Product("Name", "Description", -1.0, 1)
 
 
-def test_product_negative_quantity():
-    # Тест с отрицательным количеством
+def test_product_incorrect_quantity():
+    # Тест с отрицательным и нулевым количеством
     with pytest.raises(ValueError):
         Product("Name", "Description", 1.0, -1)
+    with pytest.raises(ValueError):
+        Product("Name", "Description", 1.0, 0)
 
 
 def test_product_invalid_data_type_name():

@@ -25,8 +25,8 @@ class Smartphone(Product):
             ]
         ):
             raise TypeError("Недопустимое значение: неверный тип данных")
-        if price < 0 or quantity < 0:
-            raise ValueError("Недопустимое значение: отрицательная величина")
+        if price < 0 or quantity <= 0:
+            raise ValueError("Недопустимое значение: отрицательная или нулевая величина")
         self.efficiency = efficiency
         self.model = model
         self.memory = memory

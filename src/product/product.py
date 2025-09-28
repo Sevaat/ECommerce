@@ -16,8 +16,8 @@ class Product(InitLoggerMixin, BaseProduct):
             ]
         ):
             raise TypeError("Недопустимое значение: неверный тип данных")
-        if price < 0 or quantity < 0:
-            raise ValueError("Недопустимое значение: отрицательная величина")
+        if price < 0 or quantity <= 0:
+            raise ValueError("Недопустимое значение: отрицательная или нулевая величина")
         self.name = name
         self.description = description
         self.__price = price
